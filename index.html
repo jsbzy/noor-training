@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noor's Post Canyon Half Marathon Training 🏅</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #0f1b1e 0%, #1a2e2a 40%, #2d4a3e 100%);
+    color: #e8f0ed;
+    min-height: 100vh;
+    padding: 24px 16px 60px;
+  }
+
+  .container { max-width: 800px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #8ec5a8;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .header h1 .pin { font-size: 28px; }
+  .header .subtitle {
+    font-size: 15px;
+    color: #9ab0a8;
+    font-weight: 400;
+  }
+
+  /* Countdown */
+  .countdown {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    margin-bottom: 32px;
+    backdrop-filter: blur(10px);
+  }
+  .countdown .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #8ec5a8;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .countdown .timer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .countdown .unit {
+    text-align: center;
+  }
+  .countdown .num {
+    font-size: 48px;
+    font-weight: 800;
+    color: #e8f0ed;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  .countdown .unit-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #6b8a80;
+    margin-top: 6px;
+  }
+
+  /* Race info */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .info-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .info-card .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #6b8a80;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .info-card .value {
+    font-size: 17px;
+    font-weight: 600;
+    color: #e8f0ed;
+  }
+  .info-card .sub {
+    font-size: 13px;
+    color: #8fa89f;
+    margin-top: 4px;
+  }
+
+  /* Progress */
+  .progress-section {
+    margin-bottom: 32px;
+  }
+  .section-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #8ec5a8;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .milestone {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    margin-bottom: 10px;
+    transition: all 0.2s ease;
+  }
+  .milestone:hover { background: rgba(255,255,255,0.06); }
+  .milestone .dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid #3a5a50;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+  }
+  .milestone.done .dot {
+    background: #3da875;
+    border-color: #3da875;
+    color: #fff;
+  }
+  .milestone.current .dot {
+    border-color: #f0a040;
+    background: rgba(240,160,64,0.15);
+  }
+  .milestone .text { flex: 1; }
+  .milestone .text .title { font-size: 15px; font-weight: 600; }
+  .milestone .text .desc { font-size: 13px; color: #8fa89f; margin-top: 2px; }
+  .milestone .week { font-size: 12px; color: #6b8a80; font-weight: 500; }
+
+  /* Weekly log */
+  .week-log {
+    margin-bottom: 32px;
+  }
+  .log-entry {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+  }
+  .log-entry .date {
+    font-size: 12px;
+    color: #6b8a80;
+    font-weight: 500;
+  }
+  .log-entry .activity {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  .log-entry .detail {
+    font-size: 13px;
+    color: #8fa89f;
+    margin-top: 4px;
+  }
+  .log-entry .tag {
+    display: inline-block;
+    background: rgba(61,168,117,0.15);
+    color: #5cba87;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 100px;
+    margin-top: 8px;
+    margin-right: 6px;
+  }
+
+  /* Wanda note */
+  .wanda-note {
+    background: rgba(61,168,117,0.06);
+    border: 1px solid rgba(61,168,117,0.15);
+    border-radius: 16px;
+    padding: 20px 22px;
+    margin-bottom: 24px;
+  }
+  .wanda-note .who {
+    font-size: 12px;
+    font-weight: 700;
+    color: #5cba87;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .wanda-note .msg {
+    font-size: 14px;
+    color: #b0c8c0;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #4a635a;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  @media (max-width: 600px) {
+    .info-grid { grid-template-columns: 1fr; }
+    .countdown .num { font-size: 36px; }
+    .header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">Trail Half Marathon</div>
+    <h1>🏔️ Post Canyon Half Marathon</h1>
+    <div class="subtitle">Hood River, Oregon · August 22, 2026</div>
+  </div>
+
+  <!-- Countdown -->
+  <div class="countdown">
+    <div class="label">Race Day Countdown</div>
+    <div class="timer" id="timer">
+      <div class="unit"><div class="num" id="days">--</div><div class="unit-label">Days</div></div>
+      <div class="unit"><div class="num" id="hours">--</div><div class="unit-label">Hours</div></div>
+      <div class="unit"><div class="num" id="minutes">--</div><div class="unit-label">Minutes</div></div>
+      <div class="unit"><div class="num" id="seconds">--</div><div class="unit-label">Seconds</div></div>
+    </div>
+  </div>
+
+  <!-- Race Info -->
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="label">Distance</div>
+      <div class="value">21.1 km / 13.1 mi</div>
+      <div class="sub">Trail · Hilly · Post Canyon</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Current Base</div>
+      <div class="value">7k hilly runs ✅</div>
+      <div class="sub">With Banjo & Bakso 🐕🐕</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Coach</div>
+      <div class="value">Wanda 📋</div>
+      <div class="sub">Nagging with love</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Moral Support</div>
+      <div class="value">Jeff 📣</div>
+      <div class="sub">Cheering, coffee in hand</div>
+    </div>
+  </div>
+
+  <!-- Training Milestones -->
+  <div class="progress-section">
+    <div class="section-title">Training Milestones</div>
+
+    <div class="milestone done">
+      <div class="dot">✓</div>
+      <div class="text">
+        <div class="title">Base Building</div>
+        <div class="desc">Consistent 5-7k runs, hilly terrain</div>
+      </div>
+      <div class="week">Week 1-4</div>
+    </div>
+
+    <div class="milestone current">
+      <div class="dot">●</div>
+      <div class="text">
+        <div class="title">Distance Build</div>
+        <div class="desc">Push long runs to 10-12k</div>
+      </div>
+      <div class="week">Week 5-8</div>
+    </div>
+
+    <div class="milestone">
+      <div class="dot"></div>
+      <div class="text">
+        <div class="title">Peak Distance</div>
+        <div class="desc">Long run: 16-18k on trail</div>
+      </div>
+      <div class="week">Week 9-10</div>
+    </div>
+
+    <div class="milestone">
+      <div class="dot"></div>
+      <div class="text">
+        <div class="title">Taper</div>
+        <div class="desc">Reduce volume, stay sharp</div>
+      </div>
+      <div class="week">Week 11</div>
+    </div>
+
+    <div class="milestone">
+      <div class="dot"></div>
+      <div class="text">
+        <div class="title">Race Day 🏁</div>
+        <div class="desc">Post Canyon Half Marathon</div>
+      </div>
+      <div class="week">Aug 22</div>
+    </div>
+  </div>
+
+  <!-- Weekly Log -->
+  <div class="week-log">
+    <div class="section-title">Activity Log</div>
+
+    <div class="log-entry">
+      <div class="date">Jun 24, 2026</div>
+      <div class="activity">7k Hilly Run 🏃‍♀️</div>
+      <div class="detail">With Banjo & Bakso. Hills crushed. Jeff felt sick. Noor did not care.</div>
+      <span class="tag">Hills</span>
+      <span class="tag">With Pups</span>
+    </div>
+
+    <div class="log-entry">
+      <div class="date">Log your runs here</div>
+      <div class="activity" style="color: #6b8a80;">No entries yet...</div>
+      <div class="detail">Tell Wanda your distance, route, and how it felt. She'll log it.</div>
+    </div>
+  </div>
+
+  <!-- Wanda's Note -->
+  <div class="wanda-note">
+    <div class="who">📋 COACH WANDA</div>
+    <div class="msg">
+      "Two months out and you're already hill-repeating with two dogs? Fine. But the pups don't count as pacers, lovebug. Time to stretch those long runs. Next milestone: 10k solo. Jeff will be on the couch with a coffee and that's exactly where I want him."
+    </div>
+  </div>
+
+  <div class="footer">
+    Built by Wanda · Always bet on Noor 🐕‍🔥
+  </div>
+
+</div>
+
+<script>
+  const raceDate = new Date('2026-08-22T08:00:00-07:00');
+
+  function updateTimer() {
+    const now = new Date();
+    const diff = raceDate - now;
+
+    if (diff <= 0) {
+      document.getElementById('days').textContent = '0';
+      document.getElementById('hours').textContent = '0';
+      document.getElementById('minutes').textContent = '0';
+      document.getElementById('seconds').textContent = '0';
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
+  }
+
+  updateTimer();
+  setInterval(updateTimer, 1000);
+</script>
+</body>
+</html>
